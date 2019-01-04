@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+    { "Gimp",     NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -47,7 +47,6 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod1Mask
 #define SUPERKEY Mod4Mask
-#define SUPERKEYX XK_Muhenkan
 #define TAGKEYS(KEY,TAG) \
 	{ SUPERKEY,                     KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -65,28 +64,30 @@ static const char *termcmd[]  = { "st", NULL };
 /* custom commands */
 static const char *rangercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *htopcmd[]  = { "st", "-e", "htop", NULL };
-// static const char *chromiumcmd[]  = { "chromium", NULL };
 static const char *browser[]  = { "xdg-open", "about:newtab", NULL };
+static const char *slockcmd[]  = { "slock", NULL };
 
 /*
+ *
+ * static const char *brightness_plus[]  = { "sh", "/home/ben/scripts/brightness.sh", "+", NULL };
+ * static const char *brightness_minus[]  = { "sh", "/home/ben/scripts/brightness.sh", "-", NULL };
  * already set keybindings via xbindkeys
  * static const char *volume_plus[]  = { "amixer", "set", "Master", "2%+", NULL };
  * static const char *volume_minus[]  = { "amixer", "set", "Master", "2%-", NULL };
  * static const char *volume_toggle[]  = { "amixer", "set", "Master", "toggle", NULL };
  */
 
-static const char *brightness_plus[]  = { "sh", "/home/ben/scripts/brightness.sh", "+", NULL };
-static const char *brightness_minus[]  = { "sh", "/home/ben/scripts/brightness.sh", "-", NULL };
-
 static Key keys[] = {
+
     /* custom keys */
-    { MODKEY|ControlMask,           XK_m,      spawn,          {.v = rangercmd } },
-    { MODKEY|ControlMask,           XK_h,      spawn,          {.v = htopcmd } },
-    { MODKEY|ControlMask,           XK_b,      spawn,          {.v = browser } },
-    { SUPERKEY,                     XK_Up,    spawn,          {.v = brightness_plus } },
-    { SUPERKEY,                     XK_Down,    spawn,          {.v = brightness_minus } },
+    { MODKEY|ControlMask,           XK_m,       spawn,          {.v = rangercmd } },
+    { MODKEY|ControlMask,           XK_h,       spawn,          {.v = htopcmd } },
+    { MODKEY|ControlMask,           XK_b,       spawn,          {.v = browser } },
+    { SUPERKEY|ControlMask,         XK_l,       spawn,          {.v = slockcmd } },
 
     /*
+     * { SUPERKEY,                     XK_Up,      spawn,          {.v = brightness_plus } },
+     * { SUPERKEY,                     XK_Down,    spawn,          {.v = brightness_minus } },
      * { SUPERKEY|ControlMask,           XK_equal,    spawn,          {.v = volume_plus } },
      * { SUPERKEY|ControlMask,           XK_minus,    spawn,          {.v = volume_minus } },
      * { SUPERKEY|ControlMask,           XK_0,    spawn,          {.v = volume_toggle } },
@@ -104,6 +105,11 @@ static Key keys[] = {
 	{ SUPERKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ SUPERKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ SUPERKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+
+	{ MODKEY|ShiftMask,               XK_h,      setcfact,       {.f = +0.25} },
+	{ MODKEY|ShiftMask,               XK_l,      setcfact,       {.f = -0.25} },
+	{ MODKEY|ShiftMask,               XK_o,      setcfact,       {.f =  0.00} },
+
 	{ SUPERKEY,                       XK_Return, zoom,           {0} },
 	{ SUPERKEY,                        XK_Tab,    view,           {0} },
 	{ SUPERKEY|ShiftMask,             XK_c,      killclient,     {0} },
