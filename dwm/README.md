@@ -1,9 +1,15 @@
-# dwm patches
+# DWM with selected patches
+
 - [columns](https://dwm.suckless.org/patches/columns/)
 - [pertag](https://dwm.suckless.org/patches/pertag/)
 - [focusonclick](https://dwm.suckless.org/patches/focusonclick/)
 - [cfacts](https://dwm.suckless.org/patches/cfacts/)
 
-# st patches
-- [anysize](https://st.suckless.org/patches/anysize/)
-- [st-scrollback-0.8.diff](https://st.suckless.org/patches/scrollback/)
+# Installation
+
+```
+git clone https://github.com/b3n10/dwm.git
+make clean
+make install
+```
+
