@@ -8,3 +8,4 @@
 - [anysize](https://st.suckless.org/patches/anysize/)
 - [st-scrollback-0.8.diff](https://st.suckless.org/patches/scrollback/)
 - [keyboard_select](https://st.suckless.org/patches/keyboard_select/)
+- [copyurl](https://st.suckless.org/patches/copyurl/)
