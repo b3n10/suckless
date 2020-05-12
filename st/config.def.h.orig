@@ -5,7 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+// static char *font = "Droid Sans Mono:pixelsize=13:antialias=true:autohint=true";
+static char *font = "xos4 Terminus:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -85,39 +86,39 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#073642", // dark green
+	"#eb606b", // light pink
+	"#c3e88d", // lime green
+	"#f7eb95", // cream
+	"#80cbc4", // light blue
+	"#ff2490", // pink
+	"#aeddff", // light blue
+	"#ffffff", // white
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	// "#ff002b",
+	"#eb606b", // light pink
+	"#eb606b", // light pink
+	"#c3e88d", // lime green
+	"#f7eb95", // cream
+	"#7dc6bf", // light blue
+	"#6c71c4", // light violet
+	"#186dad", // blue
+	"#ffffff",
 
 	[255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	/* special colors */
+	"#c4c7d1", // light gray
+	"#263238", // black
 };
-
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -162,6 +163,7 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
+#define SUPERKEY Mod4Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
@@ -170,13 +172,16 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ SUPERKEY,             XK_equal,       zoom,           {.f = +1} },
+	{ SUPERKEY,             XK_minus,       zoom,           {.f = -1} },
+	{ SUPERKEY,             XK_0,           zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	/* scrollback */
+	{ MODKEY|ControlMask,            XK_k,     kscrollup,      {.i = -1} },
+	{ MODKEY|ControlMask,            XK_j,   kscrolldown,    {.i = -1} },
 };
 
 /*
