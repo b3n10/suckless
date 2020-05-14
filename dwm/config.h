@@ -68,6 +68,7 @@ static const char *browser[]  = { "xdg-open", "about:newtab", NULL };
 static const char *slockcmd[]  = { "slock", NULL };
 static const char *muttcmd[]  = { "st", "-e", "mutt", NULL };
 static const char *ttrvcmd[]  = { "st", "-e", "ttrv", NULL };
+static const char *subscmd[]  = { "bash", "/home/ben/.local/bin/ytsubs/ytsubs", NULL };
 
 static Key keys[] = {
 
@@ -80,6 +81,7 @@ static Key keys[] = {
     { SUPERKEY|ControlMask,         XK_l,      spawn,          {.v = slockcmd } },
     { SUPERKEY|ControlMask,         XK_e,      spawn,          {.v = muttcmd } },
     { SUPERKEY|ControlMask,         XK_t,      spawn,          {.v = ttrvcmd } },
+    { SUPERKEY|ControlMask,         XK_s,      spawn,          {.v = subscmd } },
 
 	{ SUPERKEY,                     XK_p,      spawn,          {.v = dmenucmd } },
 	{ SUPERKEY|ControlMask,         XK_Return, spawn,          {.v = termcmd } },
