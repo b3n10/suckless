@@ -69,6 +69,7 @@ static const char *slockcmd[]  = { "slock", NULL };
 static const char *muttcmd[]  = { "st", "-e", "mutt", NULL };
 static const char *ttrvcmd[]  = { "st", "-e", "ttrv", NULL };
 static const char *subscmd[]  = { "bash", "/home/ben/.local/bin/ytsubs/ytsubs", NULL };
+static const char *clipmenucmd[]  = { "clipmenu", NULL };
 
 static Key keys[] = {
 
@@ -82,6 +83,7 @@ static Key keys[] = {
     { SUPERKEY|ControlMask,         XK_e,      spawn,          {.v = muttcmd } },
     { SUPERKEY|ControlMask,         XK_t,      spawn,          {.v = ttrvcmd } },
     { SUPERKEY|ControlMask,         XK_s,      spawn,          {.v = subscmd } },
+    { MODKEY|ControlMask,           XK_h,      spawn,          {.v = clipmenucmd } },
 
 	{ SUPERKEY,                     XK_p,      spawn,          {.v = dmenucmd } },
 	{ SUPERKEY|ControlMask,         XK_Return, spawn,          {.v = termcmd } },
