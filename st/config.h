@@ -90,7 +90,7 @@ static const char *colorname[] = {
         "#eb606b", // light pink
         "#c3e88d", // lime green
         "#f7eb95", // cream
-        "#80cbc4", // light blue
+        "#80cbc4", // light blue // "#031aaf"
         "#ff2490", // pink
         "#aeddff", // light blue
         "#ffffff", // white
