@@ -126,6 +126,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ SUPERKEY|ShiftMask,           XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_Tab,     focusstack,     {.i = +1 } },
 };
 
 /* button definitions */
